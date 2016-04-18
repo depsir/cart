@@ -51,7 +51,7 @@ class Cart(object):
             tax_total += tax
             total += item_total_price
         receipt_lines.append('Sales Taxes: %.2f' % tax_total)
-        receipt_lines.append('Total: %.2f' % total )
+        receipt_lines.append('Total: %.2f' % total)
         return '\n'.join(receipt_lines)
 
     def print_receipt(self):

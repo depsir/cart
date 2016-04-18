@@ -32,7 +32,7 @@ class Cart(object):
 
         return tax_amount
 
-    def print_receipt(self):
+    def build_receipt(self):
         # 1 book: 12.49
         # 1 music CD: 16.49
         # 1 chocolate bar: 0.85
@@ -49,4 +49,7 @@ class Cart(object):
             total += item_total_price
         receipt_lines.append('Sales Taxes: %.2f' % tax_total)
         receipt_lines.append('Total: %.2f' % total )
-        print '\n'.join(receipt_lines)
+        return '\n'.join(receipt_lines)
+
+    def print_receipt(self):
+        print self.build_receipt()

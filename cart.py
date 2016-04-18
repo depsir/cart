@@ -1,5 +1,4 @@
 import math
-import collections
 
 
 class Cart(object):
@@ -7,13 +6,13 @@ class Cart(object):
     def __init__(self):
         super(Cart, self).__init__()
 
-        self.items = collections.defaultdict(0)
+        self.items = []
 
-    def add_item(self, item, quantity=1):
-        self.items[item] += quantity
 
     def apply_taxes(self):
         pass
+    def add_item(self, item):
+        self.items.append(item)
 
     def print_receipt(self):
         # 1 book: 12.49

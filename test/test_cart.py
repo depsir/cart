@@ -3,14 +3,20 @@ from cart import Cart
 from item import Item
 
 
-class TestCartInput1(unittest.TestCase):
+class TestWithBasicCart(unittest.TestCase):
 
-    def setUp(self):
+    def get_basic_cart(self):
         basic_tax = 0.1
         basic_tax_exclude = ['book', 'food', 'medical']
         import_tax = 0.05
 
-        self.cart = Cart(basic_tax, import_tax, basic_tax_exclude)
+        return Cart(basic_tax, import_tax, basic_tax_exclude)
+
+
+class TestCartInput1(TestWithBasicCart):
+
+    def setUp(self):
+        self.cart = self.get_basic_cart()
         self.cart.add_item(Item(False, 'book', 'book', 12.49))
         self.cart.add_item(Item(False, 'stuff', 'music CD', 14.99))
         self.cart.add_item(Item(False, 'food', 'chocolate bar', 0.85))
@@ -24,14 +30,10 @@ Total: 29.83"""
         self.assertEqual(self.cart.build_receipt(), expected_result)
 
 
-class TestCartInput2(unittest.TestCase):
+class TestCartInput2(TestWithBasicCart):
 
     def setUp(self):
-        basic_tax = 0.1
-        basic_tax_exclude = ['book', 'food', 'medical']
-        import_tax = 0.05
-
-        self.cart = Cart(basic_tax, import_tax, basic_tax_exclude)
+        self.cart = self.get_basic_cart()
         self.cart.add_item(Item(True, 'food', 'box of chocolates', 10.00))
         self.cart.add_item(Item(True, 'stuff', 'bottle of perfume', 47.50))
 
@@ -43,14 +45,10 @@ Total: 65.15"""
         self.assertEqual(self.cart.build_receipt(), expected_result)
 
 
-class TestCartInput3(unittest.TestCase):
+class TestCartInput3(TestWithBasicCart):
 
     def setUp(self):
-        basic_tax = 0.1
-        basic_tax_exclude = ['book', 'food', 'medical']
-        import_tax = 0.05
-
-        self.cart = Cart(basic_tax, import_tax, basic_tax_exclude)
+        self.cart = self.get_basic_cart()
         self.cart.add_item(Item(True, 'stuff', 'bottle of perfume', 27.99))
         self.cart.add_item(Item(False, 'stuff', 'bottle of perfume', 18.99))
         self.cart.add_item(Item(False, 'medical', 'packet of headache pills', 9.75))

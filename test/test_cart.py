@@ -12,7 +12,6 @@ class TestWithBasicCart(unittest.TestCase):
 
         return Cart(basic_tax, import_tax, basic_tax_exclude)
 
-
 class TestCartInput1(TestWithBasicCart):
 
     def setUp(self):
@@ -62,6 +61,23 @@ class TestCartInput3(TestWithBasicCart):
 Sales Taxes: 6.70
 Total: 74.68"""
         self.assertEqual(self.cart.build_receipt(), expected_result)
+
+
+class TestRound_to_up05(TestWithBasicCart):
+    def setUp(self):
+        self.cart = self.get_basic_cart()
+
+    def test_integer_value(self):
+        self.assertEqual(self.cart.round_to_up05(12), 12)
+
+    def test_already_rounded_value(self):
+        self.assertEqual(self.cart.round_to_up05(7.45), 7.45)
+
+    def test_ceil_not_round_value(self):
+        self.assertEqual(self.cart.round_to_up05(7.49), 7.50)
+
+    def test_ceil_not_floor_not_round_value(self):
+        self.assertEqual(self.cart.round_to_up05(7.41), 7.45)
 
 if __name__ == '__main__':
     unittest.main()

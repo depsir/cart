@@ -54,7 +54,7 @@ class TestCartInput3(unittest.TestCase):
         self.cart.add_item(Item(True, 'stuff', 'bottle of perfume', 27.99))
         self.cart.add_item(Item(False, 'stuff', 'bottle of perfume', 18.99))
         self.cart.add_item(Item(False, 'medical', 'packet of headache pills', 9.75))
-        self.cart.add_item(Item(True, 'food', 'chocolates', 11.25))
+        self.cart.add_item(Item(True, 'food', 'box of chocolates', 11.25))
 
     def test_output_3(self):
         expected_result = """1 imported bottle of perfume: 32.19

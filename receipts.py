@@ -24,6 +24,6 @@ cart3 = Cart(basic_tax, import_tax, basic_tax_exclude)
 cart3.add_item(Item(True, 'stuff', 'bottle of perfume', 27.99))
 cart3.add_item(Item(False, 'stuff', 'bottle of perfume', 18.99))
 cart3.add_item(Item(False, 'medical', 'packet of headache pills', 9.75))
-cart3.add_item(Item(True, 'food', 'chocolates', 11.25))
+cart3.add_item(Item(True, 'food', 'box of chocolates', 11.25))
 cart3.print_receipt()
 print

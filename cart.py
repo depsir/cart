@@ -44,7 +44,10 @@ class Cart(object):
         for item in self.items:
             tax = self.calc_tax_for_item(item)
             item_total_price = tax + item.price
-            receipt_lines.append('1 %s: %.2f' % (item.name, item_total_price))
+            receipt_lines.append(
+                '1 %s%s: %.2f' % ('imported ' if item.imported else '',
+                                  item.name,
+                                  item_total_price))
             tax_total += tax
             total += item_total_price
         receipt_lines.append('Sales Taxes: %.2f' % tax_total)

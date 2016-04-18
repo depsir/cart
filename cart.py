@@ -12,8 +12,6 @@ class Cart(object):
         self.basic_tax_exclude = basic_tax_exclude
         self.import_tax = import_tax
 
-    def apply_taxes(self):
-        pass
     def add_item(self, item):
         self.items.append(item)
 

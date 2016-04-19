@@ -34,12 +34,33 @@ class Cart(object):
         self.import_tax = import_tax
 
     def add_item(self, item):
+        """Add an item to the cart
+
+        item must be an object with these attributes:
+        - name
+        - price
+        - category
+        - imported
+        """
         self.items.append(item)
 
     def round_to_up05(self, val):
+        """Round a value up to the nearest 0.05
+
+        Examples:
+        round_to_up05(7.49) -> 7.50
+        round_to_up05(7.41) -> 7.45
+        """
         return math.ceil(val*100/5)*5/100
 
     def calc_tax_for_item(self, item):
+        """Compute tax for the given item
+
+        Taxes are computed according to the rules
+        described in the module documentation.
+
+        Returns the total tax amount as a decimal value
+        """
         price = item.price
         import_tax_amount = 0
         basic_tax_amount = 0
@@ -54,11 +75,26 @@ class Cart(object):
         return tax_amount
 
     def build_receipt(self):
-        # 1 book: 12.49
-        # 1 music CD: 16.49
-        # 1 chocolate bar: 0.85
-        # Sales Taxes: 1.50
-        # Total: 29.83
+        """Build the receipt
+
+        Returns a string with the receipt layout.
+        Lines are separated with newline character.
+
+        The receipt follows this layout:
+        for each item in the cart one line with amount, if it is imported,
+        the product name and the price after taxes.
+        Examples:
+            Output 3:
+            1 imported bottle of perfume: 32.19
+            1 bottle of perfume: 20.89
+            1 packet of headache pills: 9.75
+
+        Two lines are added at the end of the receipt showing the total tax amount
+        and the total price after taxes
+        Example:
+            Sales Taxes: 6.70
+            Total: 74.68
+        """
         receipt_lines = []
         tax_total = 0
         total = 0
@@ -76,4 +112,5 @@ class Cart(object):
         return '\n'.join(receipt_lines)
 
     def print_receipt(self):
+        """Print receipt to standard output"""
         print self.build_receipt()

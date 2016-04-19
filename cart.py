@@ -89,7 +89,8 @@ class Cart(object):
             1 bottle of perfume: 20.89
             1 packet of headache pills: 9.75
 
-        Two lines are added at the end of the receipt showing the total tax amount
+        Two lines are added at the end of the receipt
+        showing the total tax amount
         and the total price after taxes
         Example:
             Sales Taxes: 6.70

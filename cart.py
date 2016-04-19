@@ -2,7 +2,28 @@ import math
 
 
 class Cart(object):
-    """Simple cart object"""
+    """Simple cart object
+
+    This module provides a simple tax computing algorithm
+    and the receipt layout print.
+
+    A Cart is configured with two tax values:
+    - basic_tax: a decimal value that represents tax percent
+        applied to all goods unles they are exempt.
+    - import tax: a decimal value that represents tax percent
+        applied to imported goods
+
+    An additional list of categories is used to manage exempt goods.
+
+    Taxes are applied one at a time on the base price.
+    Every tax amount is rounded up to the neares 0.05
+
+    The receipt output is formatted in this way:
+    one line for each cart item showing amount, if it is imported,
+    the product name and the price after taxes.
+    Two lines are added at the end of the receipt showing the total tax amount
+    and the total price after taxes
+    """
     def __init__(self, basic_tax, import_tax, basic_tax_exclude):
         super(Cart, self).__init__()
 

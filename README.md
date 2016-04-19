@@ -2,7 +2,7 @@
 
 Simple shopping cart.
 
-This module provides a simple tax computing algorithm and the receipt output.
+This module provides a simple tax computing algorithm and the receipt layout print.
 
 ## Installation
 

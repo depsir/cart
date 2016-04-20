@@ -61,16 +61,12 @@ class Cart(object):
 
         Returns the total tax amount as a decimal value
         """
-        price = item.price
-        import_tax_amount = 0
-        basic_tax_amount = 0
-
+        tax_amount = 0
         if item.imported:
-            import_tax_amount = self.round_to_up05(price * self.import_tax)
+            tax_amount += self.round_to_up05(item.price * self.import_tax)
 
         if item.category not in self.basic_tax_exclude:
-            basic_tax_amount = self.round_to_up05(price * self.basic_tax)
-        tax_amount = import_tax_amount + basic_tax_amount
+            tax_amount += self.round_to_up05(item.price * self.basic_tax)
 
         return tax_amount
 

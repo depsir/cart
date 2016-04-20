@@ -44,12 +44,12 @@ class Cart(object):
         """
         self.items.append(item)
 
-    def round_to_up05(self, val):
+    def round_up_to_05(self, val):
         """Round a value up to the nearest 0.05
 
         Examples:
-        round_to_up05(7.49) -> 7.50
-        round_to_up05(7.41) -> 7.45
+        round_up_to_05(7.49) -> 7.50
+        round_up_to_05(7.41) -> 7.45
         """
         return math.ceil(val * 100 / 5) * 5 / 100
 
@@ -63,10 +63,10 @@ class Cart(object):
         """
         tax_amount = 0
         if item.imported:
-            tax_amount += self.round_to_up05(item.price * self.import_tax)
+            tax_amount += self.round_up_to_05(item.price * self.import_tax)
 
         if item.category not in self.basic_tax_exclude:
-            tax_amount += self.round_to_up05(item.price * self.basic_tax)
+            tax_amount += self.round_up_to_05(item.price * self.basic_tax)
 
         return tax_amount
 

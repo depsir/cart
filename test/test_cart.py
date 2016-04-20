@@ -17,19 +17,19 @@ class TestCartExampleInputs(TestWithBasicCart):
 
     def setUp(self):
         self.cart1 = self.get_basic_cart()
-        self.cart1.add_item(Item(False, 'book', 'book', 12.49))
-        self.cart1.add_item(Item(False, 'stuff', 'music CD', 14.99))
-        self.cart1.add_item(Item(False, 'food', 'chocolate bar', 0.85))
+        self.cart1.add_item(Item('book', 12.49, 'book', False))
+        self.cart1.add_item(Item('music CD', 14.99, 'stuff', False))
+        self.cart1.add_item(Item('chocolate bar', 0.85, 'food', False))
 
         self.cart2 = self.get_basic_cart()
-        self.cart2.add_item(Item(True, 'food', 'box of chocolates', 10.00))
-        self.cart2.add_item(Item(True, 'stuff', 'bottle of perfume', 47.50))
+        self.cart2.add_item(Item('box of chocolates', 10.00, 'food', True))
+        self.cart2.add_item(Item('bottle of perfume', 47.50, 'stuff', True))
 
         self.cart3 = self.get_basic_cart()
-        self.cart3.add_item(Item(True, 'stuff', 'bottle of perfume', 27.99))
-        self.cart3.add_item(Item(False, 'stuff', 'bottle of perfume', 18.99))
-        self.cart3.add_item(Item(False, 'medical', 'packet of headache pills', 9.75))
-        self.cart3.add_item(Item(True, 'food', 'box of chocolates', 11.25))
+        self.cart3.add_item(Item('bottle of perfume', 27.99, 'stuff', True))
+        self.cart3.add_item(Item('bottle of perfume', 18.99, 'stuff', False))
+        self.cart3.add_item(Item('packet of headache pills', 9.75, 'medical', False))
+        self.cart3.add_item(Item('box of chocolates', 11.25, 'food', True))
 
     def test_output_1(self):
         expected_result = """1 book: 12.49

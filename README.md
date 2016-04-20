@@ -22,10 +22,10 @@ my_cart = cart.Cart(basic_tax=0.1,
                     import_tax=0.05,
                     basic_tax_exclude=['book', 'food', 'medical'])
 # Add Items to cart
-new_item = cart.Item(imported=False,
+new_item = cart.Item(name='book',
+                     price=12.49,
                      category='book',
-                     name='book',
-                     price=12.49)
+                     imported=False)
 my_cart.add_item(new_item)
 
 # Print the receipt

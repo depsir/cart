@@ -51,7 +51,7 @@ class Cart(object):
         round_to_up05(7.49) -> 7.50
         round_to_up05(7.41) -> 7.45
         """
-        return math.ceil(val*100/5)*5/100
+        return math.ceil(val * 100 / 5) * 5 / 100
 
     def calc_tax_for_item(self, item):
         """Compute tax for the given item

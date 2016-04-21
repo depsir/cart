@@ -7,7 +7,7 @@ class Item(object):
     - category: a string describing the item category
     - imported: a boolean which is true if this item is imported
     """
-    def __init__(self, imported, category, name, price):
+    def __init__(self, name, price, category, imported):
         super(Item, self).__init__()
         self.imported = imported
         self.category = category
